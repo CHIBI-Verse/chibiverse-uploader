@@ -94,6 +94,8 @@ async function main() {
           );
           m.image = `ipfs://${imageHash}`;
 
+          console.log(`upload image ${tokenID}.png => ${m.image}`);
+
           if (!_.isNil(m.animation_url)) {
             const animationHash = await uploadFile(
               getFileName(`assets/animation/${tokenID}.mp4`),
@@ -101,6 +103,8 @@ async function main() {
             );
 
             m.animation_url = `ipfs://${animationHash}`;
+
+            console.log(`upload video ${tokenID}.mp4 => ${m.animation_url}`);
           }
 
           fs.outputJsonSync(`assets/metadata/${tokenID}`, m);
